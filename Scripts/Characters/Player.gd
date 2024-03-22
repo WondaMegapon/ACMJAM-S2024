@@ -43,7 +43,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _process(delta):
-	
 	if(Input.is_action_just_pressed("player_pause")):
 		gamePaused = not gamePaused
 	

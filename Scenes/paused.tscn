@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://gyudyxiaa5ks"]
+
+[sub_resource type="GDScript" id="GDScript_lbjgh"]
+script/source = "extends Node2D
+
+
+func _on_resume_pressed():
+	get_tree().paused = false
+	get_tree().change_scene_to_file(\"res://Scenes/main.tscn\")
+"
+
+[node name="Paused" type="Node2D"]
+script = SubResource("GDScript_lbjgh")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 161.0
+offset_top = 63.0
+offset_right = 218.0
+offset_bottom = 86.0
+text = "Paused"
+
+[node name="Resume" type="Button" parent="."]
+offset_left = 161.0
+offset_top = 114.0
+offset_right = 228.0
+offset_bottom = 145.0
+text = "resume"
+
+[connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
