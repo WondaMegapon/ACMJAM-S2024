@@ -5,15 +5,19 @@ const JUMP_VELOCITY = -600.0 # The impulse jump force of the character.
 const DASH_MAX_COOLDOWN = 0.5 # The max cooldown of the dash
 const MAX_IFRAMES = 0.7 # The max iframes on the character.
 
+@onready var gameMaster = get_node("/root/GameMaster") # Getting our gamemaster.
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var dashCooldown = 0 # The cooldown of the dash.
 var iframes = 0 # 
-var gamePaused = false
+
+func _ready():
+	gameMaster.currentState = GameMaster.GameState.GAMEPLAY # We're video gaming now.
 
 func _physics_process(delta):
 	#Haha what if we had a pause menu?
-	if(gamePaused): return
+	if(gameMaster.currentState != GameMaster.GameState.GAMEPLAY): return
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -38,11 +42,10 @@ func _physics_process(delta):
 	# Decreasing the cooldown.
 	if(dashCooldown >= 0): dashCooldown -= delta
 	
-
 	# Moving~
 	move_and_slide()
 
 func _process(delta):
 	if(Input.is_action_just_pressed("player_pause")):
-		gamePaused = not gamePaused
+		gameMaster.currentState = GameMaster.GameState.PAUSE_MENU if gameMaster.currentState == GameMaster.GameState.GAMEPLAY else GameMaster.GameState.GAMEPLAY
 	
