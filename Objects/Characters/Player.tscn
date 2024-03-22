@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://drgdvvy4taqkv"]
 
-[ext_resource type="Script" path="res://Scenes/CharacterBody2D.gd" id="1_h7v3j"]
+[ext_resource type="Script" path="res://Scripts/Characters/Player.gd" id="1_h7v3j"]
 [ext_resource type="Texture2D" uid="uid://cnltsonbhird" path="res://icon.svg" id="2_wnw2w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jpy63"]
@@ -12,5 +12,8 @@ script = ExtResource("1_h7v3j")
 shape = SubResource("RectangleShape2D_jpy63")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-83, -53)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_wnw2w")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
