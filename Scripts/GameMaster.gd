@@ -17,7 +17,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(globalTimer)
 	if(globalTimer <= 0): # If we hit zero...
 		print("I mad grrrr...") # Debug
 		globalTimerAdd(60) # Reset.
