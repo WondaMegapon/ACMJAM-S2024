@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" path="res://Enemy.tscn" id="4_8trr8"]
 
 [node name="Node2D" type="Node2D"]
+process_mode = 1
 position = Vector2(187, 133)
 script = ExtResource("1_7d2q8")
 

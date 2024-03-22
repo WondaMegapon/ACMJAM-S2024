@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbuicd4b7sbqo"]
+
+[ext_resource type="Script" path="res://Scripts/Menues/MainMenue.gd" id="1_h5x51"]
+
+[sub_resource type="GDScript" id="GDScript_i2sdk"]
+script/source = "extends Button
+
+"
+
+[node name="MainMenue" type="Node2D"]
+script = ExtResource("1_h5x51")
+
+[node name="Play" type="Button" parent="."]
+offset_left = 112.0
+offset_top = 136.0
+offset_right = 303.0
+offset_bottom = 167.0
+text = "Play"
+script = SubResource("GDScript_i2sdk")
+
+[node name="Quit" type="Button" parent="Play"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 54.0
+offset_right = 173.0
+offset_bottom = 85.0
+text = "	Quit"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 102.0
+offset_top = 41.0
+offset_right = 310.0
+offset_bottom = 77.0
+text = "Game Title Here"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Play/Quit" to="." method="_on_quit_pressed"]
