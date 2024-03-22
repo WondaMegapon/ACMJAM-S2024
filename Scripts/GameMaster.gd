@@ -1,6 +1,6 @@
 extends Node
 
-var globalTimer = 60.0 # The timer itself.
+var globalTimer = 10.0 # The timer itself.
 
 enum GameState {MAIN_MENU, PAUSE_MENU, GAMEPLAY, CUTSCENE} # Tracking possible states.
 var currentState = GameState.GAMEPLAY # The current state.
@@ -18,8 +18,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	print(globalTimer)
-	if(globalTimer <= 0):
-		print("I mad grrrr...")
-		globalTimerAdd(60)
+	if(globalTimer <= 0): # If we hit zero...
+		print("I mad grrrr...") # Debug
+		globalTimerAdd(60) # Reset.
 	
 	globalTimer -= delta # Subtracting time.
