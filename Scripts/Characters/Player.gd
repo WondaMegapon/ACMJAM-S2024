@@ -8,7 +8,10 @@ const MAX_IFRAMES = 0.7 # The max iframes on the character.
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var dashCooldown = 0 # The cooldown of the dash.
-var iframes = 0 # 
+var iframes = 0 # The amount of iframes the character has.
+
+# Attached components
+@export var DamageVolume = Area2D
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -33,6 +36,13 @@ func _physics_process(delta):
 	
 	# Decreasing the cooldown.
 	if(dashCooldown >= 0): dashCooldown -= delta
+	if(iframes >= 0): iframes -= delta
 	
 	# Moving~
 	move_and_slide()
+	
+	# Handling collisions with enemies.
+	if (DamageVolume as Area2D).has_overlapping_bodies():
+		if(iframes <= 0):
+			iframes = MAX_IFRAMES # Capping iframes
+			print("ouch!")
