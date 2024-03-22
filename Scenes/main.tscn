@@ -1,9 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://c64ovl6jvoieq"]
+[gd_scene load_steps=4 format=3 uid="uid://c64ovl6jvoieq"]
 
 [ext_resource type="Script" path="res://Scripts/GameMaster.gd" id="1_7d2q8"]
 [ext_resource type="PackedScene" uid="uid://drgdvvy4taqkv" path="res://Objects/Characters/Player.tscn" id="2_i8yml"]
+[ext_resource type="PackedScene" uid="uid://dgt0go5gqwlap" path="res://Scenes/testplatform.tscn" id="5_cn2ej"]
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(187, 133)
 script = ExtResource("1_7d2q8")
 
 [node name="Player" parent="." instance=ExtResource("2_i8yml")]
+position = Vector2(133, -53)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("5_cn2ej")]
+position = Vector2(-86, 153)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("5_cn2ej")]
+position = Vector2(41, 151)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("5_cn2ej")]
+position = Vector2(169, 149)
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("5_cn2ej")]
+position = Vector2(295, 148)
