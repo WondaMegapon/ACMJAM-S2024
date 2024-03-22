@@ -268,6 +268,7 @@ physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_l20io")
 
 [node name="Node2D" type="Node2D"]
+process_mode = 1
 position = Vector2(187, 133)
 script = ExtResource("1_7d2q8")
 

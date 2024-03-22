@@ -22,3 +22,5 @@ func _process(delta):
 		globalTimerAdd(60) # Reset.
 	
 	globalTimer -= delta # Subtracting time.
+
+

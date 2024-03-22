@@ -9,8 +9,12 @@ const MAX_IFRAMES = 0.7 # The max iframes on the character.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var dashCooldown = 0 # The cooldown of the dash.
 var iframes = 0 # 
+var gamePaused = false
 
 func _physics_process(delta):
+	#Haha what if we had a pause menu?
+	if(gamePaused): return
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta * (1 if Input.is_action_pressed("player_jump") else 2 )
@@ -34,5 +38,12 @@ func _physics_process(delta):
 	# Decreasing the cooldown.
 	if(dashCooldown >= 0): dashCooldown -= delta
 	
+
 	# Moving~
 	move_and_slide()
+
+func _process(delta):
+	
+	if(Input.is_action_just_pressed("player_pause")):
+		gamePaused = not gamePaused
+	
