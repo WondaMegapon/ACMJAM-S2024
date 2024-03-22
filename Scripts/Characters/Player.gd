@@ -22,6 +22,6 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("player_dash"):
 		velocity.x -= JUMP_VELOCITY * 2 * direction * (1.5 if is_on_floor() else 1)
 	
-	velocity.x = move_toward(velocity.x, direction * SPEED, 80)
+	velocity.x = move_toward(velocity.x, direction * SPEED, 100)
 
 	move_and_slide()
