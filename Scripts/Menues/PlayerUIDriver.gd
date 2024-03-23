@@ -24,6 +24,7 @@ func _process(delta):
 			($Intro/Start as Control).grab_focus()
 		GameMaster.GameState.OUTRO_SCENE:
 			($Outro as CanvasItem).show()
+			($Outro/AnimationPlayer as AnimationPlayer).play("default")
 		_:
 			pass
 	previousState = gameMaster.currentState
