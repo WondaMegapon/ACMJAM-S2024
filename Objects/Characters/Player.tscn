@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://drgdvvy4taqkv"]
+[gd_scene load_steps=7 format=3 uid="uid://drgdvvy4taqkv"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player.gd" id="1_h7v3j"]
 [ext_resource type="Texture2D" uid="uid://dx1ns056julki" path="res://Textures/Characters/Player/PlayerTest.png" id="2_pi0qr"]
+[ext_resource type="Script" path="res://Scripts/Sword.gd" id="3_j6sri"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00ojk"]
 size = Vector2(60, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qrvin"]
 size = Vector2(96, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nluyv"]
+size = Vector2(81, 103)
 
 [node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("DamageVolume")]
 collision_mask = 5
@@ -34,4 +38,15 @@ monitorable = false
 [node name="DamageVolumeShape" type="CollisionShape2D" parent="DamageVolume"]
 shape = SubResource("RectangleShape2D_qrvin")
 
+[node name="Sword" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("3_j6sri")
+
+[node name="SwordHurtBox" type="CollisionShape2D" parent="Sword"]
+visibility_layer = 4
+position = Vector2(69.5, -4.5)
+shape = SubResource("RectangleShape2D_nluyv")
+
 [connection signal="area_entered" from="DamageVolume" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Sword" to="Sword" method="_on_body_entered"]
