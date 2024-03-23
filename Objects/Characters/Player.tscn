@@ -11,7 +11,7 @@ size = Vector2(24, 24)
 size = Vector2(48, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nluyv"]
-size = Vector2(81, 103)
+size = Vector2(64, 64)
 
 [node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("DamageVolume")]
 collision_layer = 3
@@ -21,9 +21,6 @@ DamageVolume = NodePath("DamageVolume")
 
 [node name="PhysicsBox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_00ojk")
-
-[node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_pi0qr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
@@ -46,11 +43,10 @@ script = ExtResource("3_j6sri")
 
 [node name="SwordHurtBox" type="CollisionShape2D" parent="Flippables/Sword"]
 visibility_layer = 4
-position = Vector2(72, 0)
+position = Vector2(32, 0)
 shape = SubResource("RectangleShape2D_nluyv")
 
 [node name="Sprite" type="Sprite2D" parent="Flippables"]
-scale = Vector2(2, 2)
 texture = ExtResource("2_pi0qr")
 
 [connection signal="area_entered" from="DamageVolume" to="." method="_on_area_2d_area_entered"]
