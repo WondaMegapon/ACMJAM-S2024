@@ -16,5 +16,5 @@ func _physics_process(delta):
 
 	# Calculate vertical velocity
 	velocity.y = direction * SPEED
-
+	$AnimatedSprite2D.play("climb")
 	move_and_slide()

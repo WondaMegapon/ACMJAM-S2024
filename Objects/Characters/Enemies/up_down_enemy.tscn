@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dheawfmnrb7uv"]
+[gd_scene load_steps=20 format=3 uid="uid://dheawfmnrb7uv"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Enemies/UpDownEnemy.gd" id="1_l1fpf"]
-[ext_resource type="Texture2D" uid="uid://bsq2yet6y6vuk" path="res://Textures/Characters/spider.png" id="2_msl1s"]
+[ext_resource type="Texture2D" uid="uid://bb6m8jmmu4fde" path="res://Textures/Characters/Player/SHEET_hellknight_spider_loop.png" id="3_4q4bw"]
 [ext_resource type="Script" path="res://Scripts/Damageable.gd" id="3_m1tum"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5k1yw"]
@@ -10,14 +10,109 @@ size = Vector2(68.5, 49)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vr1nw"]
 size = Vector2(77, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlew2"]
+atlas = ExtResource("3_4q4bw")
+region = Rect2(0, 0, 59, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtkb8"]
+atlas = ExtResource("3_4q4bw")
+region = Rect2(59, 0, 59, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ux8es"]
+atlas = ExtResource("3_4q4bw")
+region = Rect2(118, 0, 59, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lluav"]
+atlas = ExtResource("3_4q4bw")
+region = Rect2(177, 0, 59, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_el7fx"]
+atlas = ExtResource("3_4q4bw")
+region = Rect2(236, 0, 59, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgv16"]
+atlas = ExtResource("3_4q4bw")
+region = Rect2(295, 0, 59, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1pgd"]
+atlas = ExtResource("3_4q4bw")
+region = Rect2(354, 0, 59, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnbi5"]
+atlas = ExtResource("3_4q4bw")
+region = Rect2(413, 0, 59, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gulh3"]
+atlas = ExtResource("3_4q4bw")
+region = Rect2(472, 0, 59, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1h3s"]
+atlas = ExtResource("3_4q4bw")
+region = Rect2(531, 0, 59, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55qbt"]
+atlas = ExtResource("3_4q4bw")
+region = Rect2(590, 0, 59, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1d6um"]
+atlas = ExtResource("3_4q4bw")
+region = Rect2(649, 0, 59, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aiqlq"]
+atlas = ExtResource("3_4q4bw")
+region = Rect2(708, 0, 59, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5u2mf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlew2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtkb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ux8es")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lluav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_el7fx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgv16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1pgd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnbi5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gulh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1h3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55qbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1d6um")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aiqlq")
+}],
+"loop": true,
+"name": &"climb",
+"speed": 24.0
+}]
+
 [node name="UpDownEnemy" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_l1fpf")
-
-[node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_msl1s")
 
 [node name="PhysicsBox" type="CollisionShape2D" parent="."]
 position = Vector2(-2.75, -0.5)
@@ -33,5 +128,11 @@ shape = SubResource("RectangleShape2D_vr1nw")
 
 [node name="Node" type="Node" parent="."]
 script = ExtResource("3_m1tum")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 2)
+scale = Vector2(1.76271, 1.69231)
+sprite_frames = SubResource("SpriteFrames_5u2mf")
+animation = &"climb"
 
 [connection signal="area_entered" from="DamageVolume" to="." method="_on_area_2d_area_entered"]

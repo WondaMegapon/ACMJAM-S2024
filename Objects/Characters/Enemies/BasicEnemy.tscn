@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ce45sv6y7yeis"]
+[gd_scene load_steps=15 format=3 uid="uid://ce45sv6y7yeis"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Enemies/BasicEnemy.gd" id="1_wrl2x"]
-[ext_resource type="Texture2D" uid="uid://b5k24uig0irbc" path="res://Textures/Characters/demon.png" id="2_vstwp"]
 [ext_resource type="Script" path="res://Scripts/Damageable.gd" id="3_fenej"]
+[ext_resource type="Texture2D" uid="uid://bqir5rv3ubl1x" path="res://Textures/Characters/Player/SHEET_hellknight_impjump.png" id="3_ky3mi"]
+[ext_resource type="Texture2D" uid="uid://gexpqynd1lce" path="res://Textures/Characters/Player/SHEET_hellknight_impwalk.png" id="4_s7dhi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5k1yw"]
 size = Vector2(224, 244)
@@ -10,15 +11,72 @@ size = Vector2(224, 244)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vr1nw"]
 size = Vector2(248, 248)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vlcy"]
+atlas = ExtResource("3_ky3mi")
+region = Rect2(0, 0, 59, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1goq"]
+atlas = ExtResource("3_ky3mi")
+region = Rect2(59, 0, 59, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np6kb"]
+atlas = ExtResource("3_ky3mi")
+region = Rect2(118, 0, 59, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0aca6"]
+atlas = ExtResource("4_s7dhi")
+region = Rect2(0, 0, 59, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0llt"]
+atlas = ExtResource("4_s7dhi")
+region = Rect2(59, 0, 59, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amq8f"]
+atlas = ExtResource("4_s7dhi")
+region = Rect2(118, 0, 59, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxeeh"]
+atlas = ExtResource("4_s7dhi")
+region = Rect2(177, 0, 59, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_66e1y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vlcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1goq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np6kb")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0aca6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0llt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amq8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxeeh")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 12.0
+}]
+
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_wrl2x")
-
-[node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(1.5, 0.5)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_vstwp")
 
 [node name="PhysicsBox" type="CollisionShape2D" parent="."]
 position = Vector2(-2, -3.5)
@@ -36,5 +94,11 @@ shape = SubResource("RectangleShape2D_vr1nw")
 
 [node name="Node" type="Node" parent="."]
 script = ExtResource("3_fenej")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.5, -3.5)
+scale = Vector2(1.13559, 1.5641)
+sprite_frames = SubResource("SpriteFrames_66e1y")
+animation = &"jump"
 
 [connection signal="area_entered" from="DamageVolume" to="." method="_on_area_2d_area_entered"]
