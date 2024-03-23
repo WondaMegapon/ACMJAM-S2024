@@ -12,8 +12,7 @@ func _physics_process(delta):
 	velocity.x = direction * SPEED
 	$AnimatedSprite2D.play("charge")
 	
-	var collisions = move_and_collide(velocity, true)
-	if(collisions):
+	if ($DamageVolume as Area2D).has_overlapping_bodies():
 		queue_free()
 	
 	move_and_slide()

@@ -19,6 +19,12 @@ func _process(delta):
 		GameMaster.GameState.GAME_OVER:
 			($Dead as CanvasItem).show()
 			($Dead/Quit/Again as Control).grab_focus()
+		GameMaster.GameState.INTRO_SCENE:
+			($Intro as CanvasItem).show()
+			($Intro/Start as Control).grab_focus()
+		GameMaster.GameState.OUTRO_SCENE:
+			($Outro as CanvasItem).show()
+			($Outro/Quit as Control).grab_focus()
 		_:
 			pass
 	previousState = gameMaster.currentState
@@ -27,6 +33,8 @@ func restart_scene():
 	gameMaster.restart_scene()
 
 func to_title():
-	gameMaster._ready()
 	gameMaster.currentState = GameMaster.GameState.MAIN_MENU
 	get_tree().change_scene_to_file("res://Scenes/MainMenue.tscn")
+
+func start_game():
+	gameMaster.currentState = GameMaster.GameState.GAMEPLAY

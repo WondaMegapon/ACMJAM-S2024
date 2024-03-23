@@ -4,11 +4,16 @@ class_name Damageable
 @export var health : float = 2
 var damageTimer = 0;
 
+signal on_damage
+signal on_kill
+
 func hit(damage: int):
 	health -= damage
 	damageTimer = 1
+	on_damage.emit()
 	
 	if health <= 0:
+		on_kill.emit()
 		gameMaster.globalTimer += 3
 		get_parent().queue_free()
 

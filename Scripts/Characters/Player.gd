@@ -22,8 +22,6 @@ var isSlashing = false
 @onready var DamageVolume : Area2D = $DamageVolume
 @onready var Flippables : Node2D = $Flippables
 @onready var Animator : AnimationTree = $Flippables/AnimationTree
-func _ready():
-	gameMaster.currentState = GameMaster.GameState.GAMEPLAY # We're video gaming now.
 
 func _physics_process(delta):
 	#Haha what if we had a pause menu?

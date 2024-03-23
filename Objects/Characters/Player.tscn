@@ -387,7 +387,7 @@ transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransi
 graph_offset = Vector2(-158, 3)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-collision_layer = 3
+collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_h7v3j")
 
@@ -401,6 +401,7 @@ position_smoothing_enabled = true
 script = ExtResource("2_yg10b")
 
 [node name="Gameplay" type="ReferenceRect" parent="Camera2D/CanvasLayer"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -424,6 +425,35 @@ offset_bottom = 23.0
 grow_horizontal = 2
 text = "90"
 horizontal_alignment = 1
+
+[node name="Intro" type="ReferenceRect" parent="Camera2D/CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -120.0
+offset_right = 200.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="Button" parent="Camera2D/CanvasLayer/Intro"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Camera2D/CanvasLayer/Intro"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "what if we kissed???"
 
 [node name="Pause" type="ReferenceRect" parent="Camera2D/CanvasLayer"]
 visible = false
@@ -477,6 +507,7 @@ text = "Restart
 "
 
 [node name="Dead" type="ReferenceRect" parent="Camera2D/CanvasLayer"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -525,6 +556,35 @@ focus_next = NodePath("..")
 focus_previous = NodePath("..")
 text = "Try Again?"
 
+[node name="Outro" type="ReferenceRect" parent="Camera2D/CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -120.0
+offset_right = 200.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Quit" type="Button" parent="Camera2D/CanvasLayer/Outro"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Camera2D/CanvasLayer/Outro"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "you did id ded di did it!!"
+
 [node name="DamageVolume" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4
@@ -549,7 +609,6 @@ shape = SubResource("RectangleShape2D_nluyv")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flippables"]
 sprite_frames = ExtResource("4_l41cj")
 animation = &"fall"
-frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Flippables"]
 root_node = NodePath("../AnimationTree")
@@ -566,9 +625,11 @@ tree_root = SubResource("AnimationNodeStateMachine_cgstn")
 advance_expression_base_node = NodePath("../..")
 anim_player = NodePath("../AnimationPlayer")
 
+[connection signal="pressed" from="Camera2D/CanvasLayer/Intro/Start" to="Camera2D/CanvasLayer" method="start_game"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/Pause/Quit" to="Camera2D/CanvasLayer" method="to_title"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/Pause/Quit/Restart" to="Camera2D/CanvasLayer" method="restart_scene"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/Dead/Quit" to="Camera2D/CanvasLayer" method="to_title"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/Dead/Quit/Again" to="Camera2D/CanvasLayer" method="restart_scene"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/Outro/Quit" to="Camera2D/CanvasLayer" method="to_title"]
 [connection signal="area_entered" from="DamageVolume" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Flippables/Sword" to="Flippables/Sword" method="_on_body_entered"]

@@ -91,7 +91,7 @@ animations = [{
 size = Vector2(42, 76)
 
 [node name="Timelord" type="CharacterBody2D"]
-collision_layer = 0
+collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_q01fb")
 
@@ -107,3 +107,5 @@ shape = SubResource("RectangleShape2D_hqon2")
 [node name="Node" type="Node" parent="."]
 script = ExtResource("4_j43js")
 health = 30.0
+
+[connection signal="on_kill" from="Node" to="." method="handle_death"]

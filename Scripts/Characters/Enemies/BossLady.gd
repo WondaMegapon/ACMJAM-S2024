@@ -4,7 +4,7 @@ const MOVE_DURATION = 4.0  # time to move in one direction
 const SHOOT_DURATION = 0.5 # Time between shots.
 const ATTACK_VARIANCE = 8.0 # Range of attack.
 
-@onready var gameMaster = get_node("/root/GameMaster") # Getting our gamemaster.
+@onready var gameMaster = get_node("/root/GameMaster") as GameMaster # Getting our gamemaster.
 var rng = RandomNumberGenerator.new()
 
 var move_timer = MOVE_DURATION
@@ -33,3 +33,7 @@ func _physics_process(delta):
 		if(shoot_count == 0): ($AnimatedSprite2D as AnimatedSprite2D).play("bossWTF")
 	
 	move_and_slide()
+
+# Yelling at GameMaster that we're in the ending.
+func handle_death():
+	gameMaster.currentState = GameMaster.GameState.OUTRO_SCENE
