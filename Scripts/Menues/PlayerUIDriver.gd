@@ -5,7 +5,7 @@ var previousState = GameMaster.GameState.MAIN_MENU
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	($Gameplay/Timer as Label).text = str(floor(gameMaster.globalTimer))
+	($Gameplay/Heart/Timer as Label).text = str(floor(gameMaster.globalTimer))
 	
 	if(previousState == gameMaster.currentState): return
 	get_children().map(func(item): (item as CanvasItem).hide())
@@ -24,7 +24,6 @@ func _process(delta):
 			($Intro/Start as Control).grab_focus()
 		GameMaster.GameState.OUTRO_SCENE:
 			($Outro as CanvasItem).show()
-			($Outro/Quit as Control).grab_focus()
 		_:
 			pass
 	previousState = gameMaster.currentState

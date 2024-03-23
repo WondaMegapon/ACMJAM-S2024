@@ -1,12 +1,93 @@
-[gd_scene load_steps=54 format=3 uid="uid://drgdvvy4taqkv"]
+[gd_scene load_steps=73 format=3 uid="uid://drgdvvy4taqkv"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player.gd" id="1_h7v3j"]
 [ext_resource type="Script" path="res://Scripts/Menues/PlayerUIDriver.gd" id="2_yg10b"]
+[ext_resource type="Texture2D" uid="uid://dvj1qnrtnuiwc" path="res://Textures/UI/heart.png" id="3_6pu7g"]
+[ext_resource type="Texture2D" uid="uid://n685g5825dmx" path="res://Textures/UI/Intro/Intro0000.png" id="3_h67wb"]
 [ext_resource type="Script" path="res://Scripts/PlayerSword.gd" id="3_j6sri"]
+[ext_resource type="Texture2D" uid="uid://02b8rvb3biow" path="res://Textures/UI/Intro/Intro0001.png" id="4_a0lay"]
 [ext_resource type="SpriteFrames" uid="uid://dw1l0a6lpw3uh" path="res://Textures/Characters/Player/PlayerSpriteFrames.tres" id="4_l41cj"]
+[ext_resource type="Texture2D" uid="uid://dsd2q028gynyl" path="res://Textures/UI/Intro/Intro0002.png" id="5_0roxw"]
+[ext_resource type="Texture2D" uid="uid://cobvdf7q1afn6" path="res://Textures/UI/Intro/Intro0003.png" id="6_6ippn"]
+[ext_resource type="Texture2D" uid="uid://ce8u8gfbxrido" path="res://Textures/UI/Intro/Intro0004.png" id="7_qkoum"]
+[ext_resource type="Texture2D" uid="uid://dsu36ptyq2tjt" path="res://Textures/UI/Intro/Intro0005.png" id="8_vxcjr"]
+[ext_resource type="Texture2D" uid="uid://i1d7gpwihf5y" path="res://Textures/UI/Intro/Intro0006.png" id="9_eg71j"]
+[ext_resource type="Texture2D" uid="uid://bnhgifkfaw4eb" path="res://Textures/UI/Intro/Intro0007.png" id="10_7rwhh"]
+[ext_resource type="Texture2D" uid="uid://dgjmgt2fxunub" path="res://Textures/UI/Outro/Outro0000.png" id="12_mrhdc"]
+[ext_resource type="Texture2D" uid="uid://cqje7ijx3784p" path="res://Textures/UI/Outro/Outro0001.png" id="13_0hkri"]
+[ext_resource type="Texture2D" uid="uid://ba2g2o2buxdny" path="res://Textures/UI/Outro/Outro0002.png" id="14_iomuj"]
+[ext_resource type="Texture2D" uid="uid://di7r6scdfr00j" path="res://Textures/UI/Outro/Outro0003.png" id="15_ahuqt"]
+[ext_resource type="Texture2D" uid="uid://dc728wcxpafd1" path="res://Textures/UI/Outro/Outro0004.png" id="16_ut5sn"]
+[ext_resource type="Texture2D" uid="uid://bxbecpa36unmg" path="res://Textures/UI/Outro/Outro0005.png" id="17_stsg0"]
+[ext_resource type="Texture2D" uid="uid://ck5cc6klq8wml" path="res://Textures/UI/Outro/Outro0006.png" id="18_8ni5h"]
+[ext_resource type="Texture2D" uid="uid://dliqba543wvmv" path="res://Textures/UI/Outro/Outro0007.png" id="19_5dikb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00ojk"]
 size = Vector2(24, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_delvq"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("3_h67wb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_a0lay")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0roxw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6ippn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qkoum")
+}, {
+"duration": 0.5,
+"texture": ExtResource("8_vxcjr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_eg71j")
+}, {
+"duration": 2.0,
+"texture": ExtResource("10_7rwhh")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.5
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n8qyj"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("12_mrhdc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_0hkri")
+}, {
+"duration": 2.0,
+"texture": ExtResource("14_iomuj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ahuqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ut5sn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_stsg0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_8ni5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_5dikb")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.5
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qrvin"]
 size = Vector2(32, 32)
@@ -414,17 +495,28 @@ offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Timer" type="Label" parent="Camera2D/CanvasLayer/Gameplay"]
-layout_mode = 1
-anchors_preset = 5
+[node name="Heart" type="Sprite2D" parent="Camera2D/CanvasLayer/Gameplay"]
+position = Vector2(200, 25.235)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_6pu7g")
+
+[node name="Timer" type="Label" parent="Camera2D/CanvasLayer/Gameplay/Heart"]
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -9.5
-offset_right = 9.5
-offset_bottom = 23.0
+anchor_bottom = 0.5
+offset_left = -366.005
+offset_top = -226.675
+offset_right = -246.005
+offset_bottom = -138.675
 grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0402082
+scale = Vector2(1.80001, 1.80001)
+theme_override_font_sizes/font_size = 64
 text = "90"
-horizontal_alignment = 1
+horizontal_alignment = 2
 
 [node name="Intro" type="ReferenceRect" parent="Camera2D/CanvasLayer"]
 visible = false
@@ -454,6 +546,11 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "what if we kissed???"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Camera2D/CanvasLayer/Intro"]
+sprite_frames = SubResource("SpriteFrames_delvq")
+autoplay = "default"
+centered = false
 
 [node name="Pause" type="ReferenceRect" parent="Camera2D/CanvasLayer"]
 visible = false
@@ -557,7 +654,6 @@ focus_previous = NodePath("..")
 text = "Try Again?"
 
 [node name="Outro" type="ReferenceRect" parent="Camera2D/CanvasLayer"]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -570,20 +666,15 @@ offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Quit" type="Button" parent="Camera2D/CanvasLayer/Outro"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="Label" type="Label" parent="Camera2D/CanvasLayer/Outro"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "you did id ded di did it!!"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Camera2D/CanvasLayer/Outro"]
+sprite_frames = SubResource("SpriteFrames_n8qyj")
+centered = false
 
 [node name="DamageVolume" type="Area2D" parent="."]
 collision_layer = 0
@@ -626,10 +717,10 @@ advance_expression_base_node = NodePath("../..")
 anim_player = NodePath("../AnimationPlayer")
 
 [connection signal="pressed" from="Camera2D/CanvasLayer/Intro/Start" to="Camera2D/CanvasLayer" method="start_game"]
+[connection signal="animation_finished" from="Camera2D/CanvasLayer/Intro/AnimatedSprite2D" to="Camera2D/CanvasLayer" method="start_game"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/Pause/Quit" to="Camera2D/CanvasLayer" method="to_title"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/Pause/Quit/Restart" to="Camera2D/CanvasLayer" method="restart_scene"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/Dead/Quit" to="Camera2D/CanvasLayer" method="to_title"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/Dead/Quit/Again" to="Camera2D/CanvasLayer" method="restart_scene"]
-[connection signal="pressed" from="Camera2D/CanvasLayer/Outro/Quit" to="Camera2D/CanvasLayer" method="to_title"]
 [connection signal="area_entered" from="DamageVolume" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Flippables/Sword" to="Flippables/Sword" method="_on_body_entered"]

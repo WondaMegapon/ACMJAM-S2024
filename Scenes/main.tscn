@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c64ovl6jvoieq"]
+[gd_scene load_steps=15 format=3 uid="uid://c64ovl6jvoieq"]
 
 [ext_resource type="PackedScene" uid="uid://drgdvvy4taqkv" path="res://Objects/Characters/Player.tscn" id="2_i8yml"]
 [ext_resource type="TileSet" uid="uid://ddg3qjiadayav" path="res://Objects/Tilemaps/new_tile_set_Back.tres" id="4_4nc7t"]
@@ -8,8 +8,12 @@
 [ext_resource type="TileSet" uid="uid://b28nue2p1sxp1" path="res://Objects/Tilemaps/new_tile_set.tres" id="5_gr78p"]
 [ext_resource type="PackedScene" uid="uid://dlu0fwyrgw56y" path="res://Objects/Characters/MimicShop.tscn" id="6_3fbkg"]
 [ext_resource type="PackedScene" uid="uid://b3qenwlj6bljg" path="res://Objects/Characters/Enemies/bossLady.tscn" id="7_mj0n8"]
-[ext_resource type="PackedScene" uid="uid://6xkocxfyf2db" path="res://Objects/Characters/Enemies/Skulljectile.tscn" id="8_8836f"]
 [ext_resource type="AudioStream" uid="uid://drqklw6p3pkln" path="res://sounds/Normal_Music_Stress.mp3" id="8_g1nxk"]
+[ext_resource type="Texture2D" uid="uid://dhbhnslba74ul" path="res://Textures/UI/moveTutorial.png" id="10_ub2pb"]
+[ext_resource type="Texture2D" uid="uid://btalgmxmqjj0g" path="res://Textures/UI/jumpTutorial.png" id="11_xvjdu"]
+[ext_resource type="Texture2D" uid="uid://dukpau34svvt0" path="res://Textures/UI/slashTutorial.png" id="12_1lec5"]
+[ext_resource type="Texture2D" uid="uid://6anu0c0r1vn5" path="res://Textures/UI/dashTutorial.png" id="13_yhoof"]
+[ext_resource type="Texture2D" uid="uid://qno33038f1u2" path="res://Textures/UI/talkTutorial.png" id="14_tiudy"]
 
 [node name="Node2D" type="Node2D"]
 process_mode = 1
@@ -227,10 +231,31 @@ position = Vector2(2993, 3245)
 [node name="Timelord" parent="." instance=ExtResource("7_mj0n8")]
 position = Vector2(144, 3101)
 
-[node name="Enemy30" parent="." instance=ExtResource("8_8836f")]
-position = Vector2(-511, 0)
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_g1nxk")
 volume_db = -35.0
 autoplay = true
+
+[node name="MoveTutorial" type="Sprite2D" parent="."]
+position = Vector2(-677, -35)
+texture = ExtResource("10_ub2pb")
+
+[node name="JumpTutorial" type="Sprite2D" parent="."]
+position = Vector2(632, 158)
+texture = ExtResource("11_xvjdu")
+
+[node name="SlashTutorial" type="Sprite2D" parent="."]
+position = Vector2(159, 80)
+texture = ExtResource("12_1lec5")
+
+[node name="DashTutorial" type="Sprite2D" parent="."]
+position = Vector2(2686, 1004)
+texture = ExtResource("13_yhoof")
+
+[node name="TalkTutorial2" type="Sprite2D" parent="."]
+position = Vector2(6161, 3361)
+texture = ExtResource("14_tiudy")
+
+[node name="TalkTutorial" type="Sprite2D" parent="."]
+position = Vector2(368, 3111)
+texture = ExtResource("14_tiudy")

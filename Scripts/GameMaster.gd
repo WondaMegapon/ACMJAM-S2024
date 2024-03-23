@@ -12,7 +12,6 @@ func globalTimerAdd(value: int):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(currentState)
 	if(currentState == GameState.GAMEPLAY): # If we're currently video gaming.
 		if(globalTimer <= 0): # If we hit zero...
 			currentState = GameState.GAME_OVER

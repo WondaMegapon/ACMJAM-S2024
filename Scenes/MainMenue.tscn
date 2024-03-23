@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dm40gdijdcejg"]
+[gd_scene load_steps=7 format=3 uid="uid://dm40gdijdcejg"]
 
 [ext_resource type="Script" path="res://Scripts/Menues/MainMenue.gd" id="1_h5x51"]
 [ext_resource type="Texture2D" uid="uid://b8xk430twrjiq" path="res://Textures/UI/knight_title.png" id="2_bsoq1"]
+[ext_resource type="Texture2D" uid="uid://cdi6jfk8p5k75" path="res://Textures/UI/timeknight.png" id="3_jcif7"]
 
 [sub_resource type="Animation" id="Animation_54t5m"]
 resource_name = "knight_bob"
@@ -41,6 +42,7 @@ libraries = {
 autoplay = "knight_bob"
 
 [node name="KnightTitle" type="Sprite2D" parent="."]
+position = Vector2(-10, -10)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_bsoq1")
 centered = false
@@ -52,6 +54,7 @@ offset_right = 400.0
 offset_bottom = 240.0
 
 [node name="Label" type="Label" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = 136.0
 offset_top = -11.0
@@ -96,6 +99,12 @@ focus_next = NodePath("..")
 focus_previous = NodePath("..")
 text = "Play"
 script = SubResource("GDScript_i2sdk")
+
+[node name="Timeknight" type="Sprite2D" parent="."]
+position = Vector2(322, 45)
+rotation = -0.0188967
+scale = Vector2(0.212218, 0.212218)
+texture = ExtResource("3_jcif7")
 
 [connection signal="pressed" from="Control/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Control/Quit/Play" to="." method="_on_play_pressed"]
