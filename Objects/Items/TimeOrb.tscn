@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4klrm30rcuib"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/TimeOrb.gd" id="1_mlw3e"]
+[ext_resource type="Texture2D" uid="uid://c4jg1hffpewok" path="res://Textures/Objects/TimeOrb.png" id="1_ninas"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ffce"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tj7jh"]
+radius = 96.0
+
+[node name="TimeOrb" type="Node2D" node_paths=PackedStringArray("CollectionArea")]
+script = ExtResource("1_mlw3e")
+CollectionArea = NodePath("GravityArea")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ninas")
+
+[node name="CollectionArea" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollectionBox" type="CollisionShape2D" parent="CollectionArea"]
+shape = SubResource("CircleShape2D_7ffce")
+debug_color = Color(0, 0.65098, 0.152941, 0.419608)
+
+[node name="GravityArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="GravityBox" type="CollisionShape2D" parent="GravityArea"]
+shape = SubResource("CircleShape2D_tj7jh")

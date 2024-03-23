@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const SPEED = 500.0 # The movement speed of the character.
-const JUMP_VELOCITY = -600.0 # The impulse jump force of the character.
+const SPEED = 300.0 # The movement speed of the character.
+const JUMP_VELOCITY = -400.0 # The impulse jump force of the character.
 const DASH_MAX_COOLDOWN = 0.5 # The max cooldown of the dash
 const MAX_IFRAMES = 0.7 # The max iframes on the character.
 
