@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dlu0fwyrgw56y"]
 
-[ext_resource type="Texture2D" uid="uid://bmo4gbfvunvfc" path="res://mimicshop.png" id="1_7pypl"]
+[ext_resource type="Texture2D" uid="uid://bmo4gbfvunvfc" path="res://Textures/Characters/mimicshop.png" id="1_7pypl"]
 [ext_resource type="Script" path="res://Scripts/Characters/MimicShop.gd" id="1_hbg44"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vr22i"]
