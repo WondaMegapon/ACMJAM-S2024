@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3qenwlj6bljg"]
+[gd_scene load_steps=17 format=3 uid="uid://b3qenwlj6bljg"]
 
 [ext_resource type="Texture2D" uid="uid://7nox1rhi1g15" path="res://Textures/Characters/Player/bossHurt.png" id="1_7haat"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemies/BossLady.gd" id="1_q01fb"]
 [ext_resource type="Texture2D" uid="uid://bucl4dvscrc7o" path="res://Textures/Characters/Player/SHEET_hellknight_boss_wtf.png" id="2_6if2m"]
 [ext_resource type="Texture2D" uid="uid://ohrlk06eo2f5" path="res://Textures/Characters/Player/SHEET_hellknight_boss_point.png" id="3_bsl3u"]
+[ext_resource type="Script" path="res://Scripts/Damageable.gd" id="4_j43js"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i0kkw"]
 atlas = ExtResource("1_7haat")
@@ -46,7 +48,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i0kkw")
 }],
-"loop": true,
+"loop": false,
 "name": &"bossHurt",
 "speed": 5.0
 }, {
@@ -60,7 +62,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1b30m")
 }],
-"loop": true,
+"loop": false,
 "name": &"bossWTF",
 "speed": 4.0
 }, {
@@ -80,7 +82,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hp28d")
 }],
-"loop": true,
+"loop": false,
 "name": &"sendMobs",
 "speed": 6.0
 }]
@@ -89,13 +91,19 @@ animations = [{
 size = Vector2(42, 76)
 
 [node name="Timelord" type="CharacterBody2D"]
+collision_layer = 0
 collision_mask = 3
+script = ExtResource("1_q01fb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3dtrp")
 animation = &"sendMobs"
-frame_progress = 0.0177113
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 1)
 shape = SubResource("RectangleShape2D_hqon2")
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("4_j43js")
+health = 30.0

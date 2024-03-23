@@ -15,5 +15,5 @@ func hit(damage: int):
 func _process(delta):
 	if(damageTimer > 0):
 		damageTimer -= delta
-		(get_parent().get_child(3) as AnimatedSprite2D).modulate = Color(2, sin(damageTimer * 32), sin(damageTimer * 32))
-	else: (get_parent().get_child(3) as AnimatedSprite2D).modulate = Color.WHITE
+		(get_parent().find_child("AnimatedSprite2D") as AnimatedSprite2D).modulate = Color(2, sin(damageTimer * 32), sin(damageTimer * 32))
+	else: (get_parent().find_child("AnimatedSprite2D") as AnimatedSprite2D).modulate = Color.WHITE
