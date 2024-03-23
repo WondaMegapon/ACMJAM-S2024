@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://drgdvvy4taqkv"]
+[gd_scene load_steps=5 format=3 uid="uid://drgdvvy4taqkv"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player.gd" id="1_h7v3j"]
 [ext_resource type="Texture2D" uid="uid://dx1ns056julki" path="res://Textures/Characters/Player/PlayerTest.png" id="2_pi0qr"]
@@ -6,16 +6,32 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00ojk"]
 size = Vector2(60, 60)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
-script = ExtResource("1_h7v3j")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrvin"]
+size = Vector2(96, 96)
 
-[node name="CollisonShapePhysics" type="CollisionShape2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("DamageVolume")]
+collision_mask = 5
+script = ExtResource("1_h7v3j")
+DamageVolume = NodePath("DamageVolume")
+
+[node name="PhysicsBox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_00ojk")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
 texture = ExtResource("2_pi0qr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
+
+[node name="DamageVolume" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+input_pickable = false
+monitorable = false
+
+[node name="DamageVolumeShape" type="CollisionShape2D" parent="DamageVolume"]
+shape = SubResource("RectangleShape2D_qrvin")
+
+[connection signal="area_entered" from="DamageVolume" to="." method="_on_area_2d_area_entered"]
