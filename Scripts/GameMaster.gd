@@ -1,6 +1,6 @@
 extends Node
 
-var globalTimer = 10.0 # The timer itself.
+var globalTimer = 60.0 # The timer itself.
 
 enum GameState {MAIN_MENU, PAUSE_MENU, GAMEPLAY, CUTSCENE} # Tracking possible states.
 var currentState = GameState.MAIN_MENU # The current state.

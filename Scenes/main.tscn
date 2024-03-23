@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c64ovl6jvoieq"]
+[gd_scene load_steps=6 format=3 uid="uid://c64ovl6jvoieq"]
 
 [ext_resource type="PackedScene" uid="uid://drgdvvy4taqkv" path="res://Objects/Characters/Player.tscn" id="2_i8yml"]
 [ext_resource type="TileSet" uid="uid://dbqrtrx1sjc54" path="res://Objects/Tilemaps/ogatemplate.tres" id="4_7yxpr"]
 [ext_resource type="PackedScene" uid="uid://ce45sv6y7yeis" path="res://Objects/Characters/Enemies/BasicEnemy.tscn" id="4_8trr8"]
-[ext_resource type="PackedScene" uid="uid://dxmbtl5t6ws4k" path="res://Objects/Characters/Enemies/up_down_enemy.tscn" id="4_ell8n"]
+[ext_resource type="PackedScene" path="res://Objects/Characters/Enemies/up_down_enemy.tscn" id="4_ell8n"]
 [ext_resource type="PackedScene" uid="uid://c4klrm30rcuib" path="res://Objects/Items/TimeOrb.tscn" id="4_xh056"]
 
 [node name="Node2D" type="Node2D"]
@@ -24,5 +24,6 @@ layer_0/tile_data = PackedInt32Array(327685, 196608, 5, 262149, 393216, 4, 19661
 
 [node name="UpDownEnemy" parent="." instance=ExtResource("4_ell8n")]
 position = Vector2(-142, -258)
+
 [node name="TimeOrb" parent="." instance=ExtResource("4_xh056")]
 position = Vector2(-112, -27)

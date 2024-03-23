@@ -395,6 +395,33 @@ shape = SubResource("RectangleShape2D_00ojk")
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="Container" type="ReferenceRect" parent="Camera2D/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -120.0
+offset_right = 200.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Camera2D/CanvasLayer/Container"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -9.5
+offset_right = 9.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "90"
+horizontal_alignment = 1
+
 [node name="DamageVolume" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4
@@ -419,7 +446,6 @@ shape = SubResource("RectangleShape2D_nluyv")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flippables"]
 sprite_frames = ExtResource("4_l41cj")
 animation = &"fall"
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Flippables"]
 root_node = NodePath("../AnimationTree")
