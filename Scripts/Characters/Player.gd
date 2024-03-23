@@ -73,7 +73,7 @@ func _process(delta):
 		gameMaster.currentState = GameMaster.GameState.PAUSE_MENU if gameMaster.currentState == GameMaster.GameState.GAMEPLAY else GameMaster.GameState.GAMEPLAY
 	
 	if(iframes > 0):
-		($Flippables/AnimatedSprite2D as AnimatedSprite2D).modulate = Color(1, 1, 1, sin(iframes * 64) + 0.1)
+		($Flippables/AnimatedSprite2D as AnimatedSprite2D).modulate = Color(2 + sin(iframes * 64), 2 + sin(iframes * 64), 2 + sin(iframes * 64))
 	else: ($Flippables/AnimatedSprite2D as AnimatedSprite2D).modulate = Color.WHITE
 	
 	timerLabel.text = str(floor(gameMaster.globalTimer)) # Handling the timer.
