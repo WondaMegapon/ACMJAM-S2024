@@ -76,7 +76,7 @@ func _physics_process(delta):
 	if (DamageVolume as Area2D).has_overlapping_bodies():
 		if(iframes <= 0):
 			iframes = MAX_IFRAMES # Capping iframes
-			gameMaster.globalTimerAdd(-15) # Removing time~
+			gameMaster.globalTimerAdd(-5) # Removing time~
 			
 	if (direction != 0): Flippables.transform.x *= -1 if sign(Flippables.transform.x.x) != sign(direction) else 1
 
