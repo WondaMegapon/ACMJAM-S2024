@@ -5,10 +5,10 @@
 [ext_resource type="Script" path="res://Scripts/Damageable.gd" id="3_m1tum"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5k1yw"]
-size = Vector2(64, 52)
+size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vr1nw"]
-size = Vector2(77, 64)
+size = Vector2(48, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jlew2"]
 atlas = ExtResource("3_4q4bw")
@@ -122,15 +122,12 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="DamageVolumeShape" type="CollisionShape2D" parent="DamageVolume"]
-position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_vr1nw")
 
 [node name="Node" type="Node" parent="."]
 script = ExtResource("3_m1tum")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, 2)
-scale = Vector2(1.76271, 1.69231)
 sprite_frames = SubResource("SpriteFrames_5u2mf")
 animation = &"climb"
 

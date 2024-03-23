@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dheawfmnrb7uv" path="res://Objects/Characters/Enemies/up_down_enemy.tscn" id="4_ell8n"]
 [ext_resource type="PackedScene" uid="uid://c4klrm30rcuib" path="res://Objects/Items/TimeOrb.tscn" id="4_xh056"]
 [ext_resource type="PackedScene" uid="uid://dlu0fwyrgw56y" path="res://Objects/Characters/MimicShop.tscn" id="6_3fbkg"]
-[ext_resource type="PackedScene" uid="uid://c56ech8lagdfl" path="res://Objects/Characters/Enemies/bossLady.tscn" id="7_mj0n8"]
+[ext_resource type="PackedScene" uid="uid://b3qenwlj6bljg" path="res://Objects/Characters/Enemies/bossLady.tscn" id="7_mj0n8"]
 
 [node name="Node2D" type="Node2D"]
 process_mode = 1

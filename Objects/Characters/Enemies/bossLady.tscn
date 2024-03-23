@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c56ech8lagdfl"]
+[gd_scene load_steps=15 format=3 uid="uid://b3qenwlj6bljg"]
 
 [ext_resource type="Texture2D" uid="uid://7nox1rhi1g15" path="res://Textures/Characters/Player/bossHurt.png" id="1_7haat"]
 [ext_resource type="Texture2D" uid="uid://bucl4dvscrc7o" path="res://Textures/Characters/Player/SHEET_hellknight_boss_wtf.png" id="2_6if2m"]
