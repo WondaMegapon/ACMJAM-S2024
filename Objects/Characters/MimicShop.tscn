@@ -145,7 +145,7 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iehq4"]
 advance_mode = 2
-advance_expression = "ShopArea.has_overlapping_bodies()"
+advance_expression = "ShopArea.has_overlapping_bodies() and shopStock > 0"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8tdti"]
 switch_mode = 2
@@ -157,7 +157,7 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yu8re"]
 advance_mode = 2
-advance_expression = "not ShopArea.has_overlapping_bodies()"
+advance_expression = "not ShopArea.has_overlapping_bodies() or shopStock <= 0"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_sd4bh"]
 states/close/node = SubResource("AnimationNodeAnimation_ioist")
