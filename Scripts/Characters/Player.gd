@@ -8,7 +8,6 @@ const MAX_IFRAMES = 0.7 # The max iframes on the character.\
 const SWORDBEAM = preload("res://Scenes/sword_beam.tscn")
 
 @onready var gameMaster = get_node("/root/GameMaster") as GameMaster # Getting our gamemaster.
-@onready var timerLabel = $Camera2D/CanvasLayer/Container/Label as Label
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -83,10 +82,14 @@ func _physics_process(delta):
 func _process(delta):
 	# Input~
 	if(Input.is_action_just_pressed("player_pause")):
-		gameMaster.currentState = GameMaster.GameState.PAUSE_MENU if gameMaster.currentState == GameMaster.GameState.GAMEPLAY else GameMaster.GameState.GAMEPLAY
+		match gameMaster.currentState:
+			GameMaster.GameState.PAUSE_MENU:
+				gameMaster.currentState = GameMaster.GameState.GAMEPLAY
+			GameMaster.GameState.GAMEPLAY:
+					gameMaster.currentState = GameMaster.GameState.PAUSE_MENU
+			_:
+				pass
 	
 	if(iframes > 0):
 		($Flippables/AnimatedSprite2D as AnimatedSprite2D).modulate = Color(2 + sin(iframes * 64), 2 + sin(iframes * 64), 2 + sin(iframes * 64))
 	else: ($Flippables/AnimatedSprite2D as AnimatedSprite2D).modulate = Color.WHITE
-	
-	timerLabel.text = str(floor(gameMaster.globalTimer)) # Handling the timer.
