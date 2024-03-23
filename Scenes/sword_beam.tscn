@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://oxjm6xvi7qc0"]
+
+[ext_resource type="Script" path="res://Scripts/SwordBeam.gd" id="1_co338"]
+[ext_resource type="Texture2D" uid="uid://c0bders2swrhv" path="res://Textures/Characters/Player/SHEET_hellknight_slash_projectile.png" id="2_en43n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mx2u"]
+atlas = ExtResource("2_en43n")
+region = Rect2(0, 0, 59, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yg6qt"]
+atlas = ExtResource("2_en43n")
+region = Rect2(59, 0, 59, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2h6t"]
+atlas = ExtResource("2_en43n")
+region = Rect2(118, 0, 59, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82r5r"]
+atlas = ExtResource("2_en43n")
+region = Rect2(177, 0, 59, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqmuj"]
+atlas = ExtResource("2_en43n")
+region = Rect2(236, 0, 59, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0j5o"]
+atlas = ExtResource("2_en43n")
+region = Rect2(295, 0, 59, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_klkn4"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mx2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yg6qt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2h6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82r5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqmuj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0j5o")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2cksk"]
+size = Vector2(32, 14)
+
+[node name="SwordBeam" type="Area2D"]
+script = ExtResource("1_co338")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_klkn4")
+animation = &"shoot"
+frame_progress = 0.632626
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 8)
+shape = SubResource("RectangleShape2D_2cksk")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

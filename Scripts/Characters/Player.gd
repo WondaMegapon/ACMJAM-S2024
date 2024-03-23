@@ -3,7 +3,8 @@ extends CharacterBody2D
 const SPEED = 300.0 # The movement speed of the character.
 const JUMP_VELOCITY = -400.0 # The impulse jump force of the character.
 const DASH_MAX_COOLDOWN = 0.5 # The max cooldown of the dash
-const MAX_IFRAMES = 0.7 # The max iframes on the character.
+const MAX_IFRAMES = 0.7 # The max iframes on the character.\
+const SWORDBEAM = preload("res://Scenes/sword_beam.tscn")
 
 @onready var gameMaster = get_node("/root/GameMaster") as GameMaster # Getting our gamemaster.
 @onready var timerLabel = $Camera2D/CanvasLayer/Container/Label as Label
@@ -50,6 +51,12 @@ func _physics_process(delta):
 	
 	# Drag on horizontal momentum.
 	velocity.x = move_toward(velocity.x, direction * SPEED, 100)
+	
+	if Input.is_action_just_pressed("player_shoot"):
+		var beam =  SWORDBEAM.instantiate()
+		get_parent().add_child(beam)
+		beam.position = position
+		if (direction != 0): beam.transform.x *= -1 if sign(beam.transform.x.x) != sign(direction) else 1
 	
 	# Decreasing the cooldown.
 	if(dashCooldown >= 0): dashCooldown -= delta
