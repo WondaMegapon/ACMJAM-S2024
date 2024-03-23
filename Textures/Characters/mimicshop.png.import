@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bmo4gbfvunvfc"
-path="res://.godot/imported/mimicshop.png-c5cd5d57b37d6617c528349a90fdd100.ctex"
+path="res://.godot/imported/mimicshop.png-75cdfe6e41a1b0c61fcd081888aa0607.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mimicshop.png"
-dest_files=["res://.godot/imported/mimicshop.png-c5cd5d57b37d6617c528349a90fdd100.ctex"]
+source_file="res://Textures/Characters/mimicshop.png"
+dest_files=["res://.godot/imported/mimicshop.png-75cdfe6e41a1b0c61fcd081888aa0607.ctex"]
 
 [params]
 
