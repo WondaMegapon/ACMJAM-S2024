@@ -23,6 +23,3 @@ func _process(delta):
 			get_tree().reload_current_scene() # No more sceeene~
 		if(globalTimer >= 0):
 			globalTimer -= delta # Subtracting time.
-		print(globalTimer)
-
-

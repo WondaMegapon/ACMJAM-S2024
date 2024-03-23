@@ -447,6 +447,7 @@ shape = SubResource("RectangleShape2D_nluyv")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flippables"]
 sprite_frames = ExtResource("4_l41cj")
 animation = &"fall"
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Flippables"]
 root_node = NodePath("../AnimationTree")
