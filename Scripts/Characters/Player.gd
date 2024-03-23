@@ -60,7 +60,7 @@ func _physics_process(delta):
 			
 	if direction < 0:
 			sprite.flip_h = true
-	else:
+	if direction > 0:
 			sprite.flip_h = false
 
 func _process(delta):
