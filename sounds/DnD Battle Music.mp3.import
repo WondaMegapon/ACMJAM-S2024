@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bh7dytrqwgstp"
+path="res://.godot/imported/DnD Battle Music.mp3-2f7db312ccf3dbb64a1701a87702687d.mp3str"
+
+[deps]
+
+source_file="res://sounds/DnD Battle Music.mp3"
+dest_files=["res://.godot/imported/DnD Battle Music.mp3-2f7db312ccf3dbb64a1701a87702687d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

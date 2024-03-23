@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c64ovl6jvoieq"]
+[gd_scene load_steps=9 format=3 uid="uid://c64ovl6jvoieq"]
 
 [ext_resource type="PackedScene" uid="uid://drgdvvy4taqkv" path="res://Objects/Characters/Player.tscn" id="2_i8yml"]
 [ext_resource type="TileSet" uid="uid://dbqrtrx1sjc54" path="res://Objects/Tilemaps/ogatemplate.tres" id="4_7yxpr"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c4klrm30rcuib" path="res://Objects/Items/TimeOrb.tscn" id="4_xh056"]
 [ext_resource type="PackedScene" uid="uid://dlu0fwyrgw56y" path="res://Objects/Characters/MimicShop.tscn" id="6_3fbkg"]
 [ext_resource type="PackedScene" uid="uid://c56ech8lagdfl" path="res://Objects/Characters/Enemies/bossLady.tscn" id="7_mj0n8"]
+[ext_resource type="AudioStream" uid="uid://drqklw6p3pkln" path="res://sounds/Normal_Music_Stress.mp3" id="8_g1nxk"]
 
 [node name="Node2D" type="Node2D"]
 process_mode = 1
@@ -203,3 +204,8 @@ position = Vector2(2993, 3245)
 
 [node name="Timelord" parent="." instance=ExtResource("7_mj0n8")]
 position = Vector2(-511, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_g1nxk")
+volume_db = -35.0
+autoplay = true
