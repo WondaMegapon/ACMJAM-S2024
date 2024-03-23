@@ -11,7 +11,7 @@ size = Vector2(24, 24)
 size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nluyv"]
-size = Vector2(72, 64)
+size = Vector2(82, 64)
 
 [sub_resource type="Animation" id="Animation_m7kb4"]
 length = 0.416667
@@ -441,13 +441,12 @@ script = ExtResource("3_j6sri")
 
 [node name="SwordHurtBox" type="CollisionShape2D" parent="Flippables/Sword"]
 visibility_layer = 4
-position = Vector2(38, 0)
+position = Vector2(32, 0)
 shape = SubResource("RectangleShape2D_nluyv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flippables"]
 sprite_frames = ExtResource("4_l41cj")
 animation = &"fall"
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Flippables"]
 root_node = NodePath("../AnimationTree")

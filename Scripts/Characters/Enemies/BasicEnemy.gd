@@ -30,3 +30,6 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
+
+func _process(delta):
+	($AnimatedSprite2D as AnimatedSprite2D).flip_h = direction == 1

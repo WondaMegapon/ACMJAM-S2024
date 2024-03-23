@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/Damageable.gd" id="3_m1tum"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5k1yw"]
-size = Vector2(68.5, 49)
+size = Vector2(64, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vr1nw"]
 size = Vector2(77, 64)
@@ -115,7 +115,6 @@ collision_mask = 7
 script = ExtResource("1_l1fpf")
 
 [node name="PhysicsBox" type="CollisionShape2D" parent="."]
-position = Vector2(-2.75, -0.5)
 shape = SubResource("RectangleShape2D_5k1yw")
 
 [node name="DamageVolume" type="Area2D" parent="."]
@@ -123,7 +122,7 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="DamageVolumeShape" type="CollisionShape2D" parent="DamageVolume"]
-position = Vector2(-0.5, 1)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_vr1nw")
 
 [node name="Node" type="Node" parent="."]
