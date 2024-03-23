@@ -1,13 +1,174 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlu0fwyrgw56y"]
+[gd_scene load_steps=20 format=3 uid="uid://dlu0fwyrgw56y"]
 
-[ext_resource type="Texture2D" uid="uid://bmo4gbfvunvfc" path="res://Textures/Characters/mimicshop.png" id="1_7pypl"]
 [ext_resource type="Script" path="res://Scripts/Characters/MimicShop.gd" id="1_hbg44"]
+[ext_resource type="SpriteFrames" uid="uid://cedusrd3dgrjc" path="res://Textures/Characters/Mimi/MimiSpriteFrames.tres" id="2_sk0a7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vr22i"]
 size = Vector2(79, 76)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1lijl"]
 size = Vector2(78, 75)
+
+[sub_resource type="Animation" id="Animation_4hlpk"]
+length = 0.583333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["close"]
+}
+
+[sub_resource type="Animation" id="Animation_stjr5"]
+length = 0.583333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["idle"]
+}
+
+[sub_resource type="Animation" id="Animation_oaxn4"]
+resource_name = "open"
+length = 0.583333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["open"]
+}
+
+[sub_resource type="Animation" id="Animation_7r7hp"]
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["shut"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2n4uy"]
+_data = {
+"close": SubResource("Animation_4hlpk"),
+"idle": SubResource("Animation_stjr5"),
+"open": SubResource("Animation_oaxn4"),
+"shut": SubResource("Animation_7r7hp")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ioist"]
+animation = &"close"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_om32b"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pfuya"]
+animation = &"open"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v6fja"]
+animation = &"shut"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rmsok"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iehq4"]
+advance_mode = 2
+advance_expression = "ShopArea.has_overlapping_bodies()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8tdti"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l0bdm"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yu8re"]
+advance_mode = 2
+advance_expression = "not ShopArea.has_overlapping_bodies()"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_sd4bh"]
+states/close/node = SubResource("AnimationNodeAnimation_ioist")
+states/close/position = Vector2(399.259, 190)
+states/idle/node = SubResource("AnimationNodeAnimation_om32b")
+states/idle/position = Vector2(398.864, 110)
+states/open/node = SubResource("AnimationNodeAnimation_pfuya")
+states/open/position = Vector2(398.667, 35.3333)
+states/shut/node = SubResource("AnimationNodeAnimation_v6fja")
+states/shut/position = Vector2(302.667, 101.556)
+transitions = ["Start", "shut", SubResource("AnimationNodeStateMachineTransition_rmsok"), "shut", "open", SubResource("AnimationNodeStateMachineTransition_iehq4"), "open", "idle", SubResource("AnimationNodeStateMachineTransition_8tdti"), "close", "shut", SubResource("AnimationNodeStateMachineTransition_l0bdm"), "idle", "close", SubResource("AnimationNodeStateMachineTransition_yu8re")]
 
 [node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("ShopArea")]
 light_mask = 8
@@ -17,18 +178,29 @@ script = ExtResource("1_hbg44")
 ShopArea = NodePath("ShopArea")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.5, -2)
 shape = SubResource("RectangleShape2D_vr22i")
 one_way_collision = true
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_7pypl")
 
 [node name="ShopArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
 [node name="ShopBox" type="CollisionShape2D" parent="ShopArea"]
-position = Vector2(-3, -1.5)
 shape = SubResource("RectangleShape2D_1lijl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2n4uy")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_sk0a7")
+animation = &"shut"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2n4uy")
+}
+tree_root = SubResource("AnimationNodeStateMachine_sd4bh")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
