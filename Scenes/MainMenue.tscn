@@ -1,6 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://dm40gdijdcejg"]
+[gd_scene load_steps=6 format=3 uid="uid://dm40gdijdcejg"]
 
 [ext_resource type="Script" path="res://Scripts/Menues/MainMenue.gd" id="1_h5x51"]
+[ext_resource type="Texture2D" uid="uid://b8xk430twrjiq" path="res://Textures/UI/knight_title.png" id="2_bsoq1"]
+
+[sub_resource type="Animation" id="Animation_54t5m"]
+resource_name = "knight_bob"
+length = 8.0
+loop_mode = 1
+step = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KnightTitle:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -10), Vector2(0, -3), Vector2(0, -10)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eii1g"]
+_data = {
+"knight_bob": SubResource("Animation_54t5m")
+}
 
 [sub_resource type="GDScript" id="GDScript_i2sdk"]
 script/source = "extends Button
@@ -10,29 +34,61 @@ script/source = "extends Button
 [node name="MainMenue" type="Node2D"]
 script = ExtResource("1_h5x51")
 
-[node name="Play" type="Button" parent="."]
-offset_left = 112.0
-offset_top = 136.0
-offset_right = 303.0
-offset_bottom = 167.0
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eii1g")
+}
+autoplay = "knight_bob"
+
+[node name="KnightTitle" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_bsoq1")
+centered = false
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 400.0
+offset_bottom = 240.0
+
+[node name="Label" type="Label" parent="Control"]
+offset_left = 136.0
+offset_top = -11.0
+offset_right = 396.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 48
+text = "Timeknight"
+horizontal_alignment = 1
+
+[node name="Quit" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -42.0
+offset_right = -16.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "	Quit"
+
+[node name="Play" type="Button" parent="Control/Quit"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -64.0
+offset_bottom = -32.0
+grow_horizontal = 0
+grow_vertical = 2
 text = "Play"
 script = SubResource("GDScript_i2sdk")
 
-[node name="Quit" type="Button" parent="Play"]
-layout_mode = 0
-offset_left = 18.0
-offset_top = 54.0
-offset_right = 173.0
-offset_bottom = 85.0
-text = "	Quit"
-
-[node name="Label" type="Label" parent="."]
-offset_left = 102.0
-offset_top = 41.0
-offset_right = 310.0
-offset_bottom = 77.0
-text = "Game Title Here"
-horizontal_alignment = 1
-
-[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Play/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Control/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Control/Quit/Play" to="." method="_on_play_pressed"]
