@@ -12,16 +12,14 @@ func globalTimerAdd(value: int):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	globalTimer = 60.0 # Resetting~
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if(currentState == GameState.GAMEPLAY): # If we're currently video gaming.
 		if(globalTimer <= 0): # If we hit zero...
-			print("I mad grrrr...") # Debug
-			globalTimerAdd(60) # Reset.
+			_ready() # Just doing that stuff again.
+			get_tree().reload_current_scene() # No more sceeene~
 		if(globalTimer >= 0):
 			globalTimer -= delta # Subtracting time.
-		print(globalTimer)
-
-

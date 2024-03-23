@@ -11,7 +11,7 @@ size = Vector2(24, 24)
 size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nluyv"]
-size = Vector2(64, 64)
+size = Vector2(72, 64)
 
 [sub_resource type="Animation" id="Animation_m7kb4"]
 length = 0.416667
@@ -328,6 +328,7 @@ advance_expression = "dashCooldown >= DASH_MAX_COOLDOWN - 0.1"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dbw7e"]
 switch_mode = 2
 advance_mode = 2
+advance_expression = "not isSlashing"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_odr4l"]
 advance_mode = 2
@@ -359,7 +360,7 @@ states/slash/position = Vector2(534.667, 33.1245)
 states/walk/node = SubResource("AnimationNodeAnimation_h31ks")
 states/walk/position = Vector2(247.901, 199.333)
 transitions = ["idle", "End", SubResource("AnimationNodeStateMachineTransition_x8lry"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_fct0a"), "dash", "idle", SubResource("AnimationNodeStateMachineTransition_8ce8u"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_nsy3l"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_gt4ih"), "walk", "dash", SubResource("AnimationNodeStateMachineTransition_p2app"), "slash", "idle", SubResource("AnimationNodeStateMachineTransition_dbw7e"), "walk", "End", SubResource("AnimationNodeStateMachineTransition_odr4l"), "idle", "slash", SubResource("AnimationNodeStateMachineTransition_a0apx"), "airslash", "idle", SubResource("AnimationNodeStateMachineTransition_iim3o"), "walk", "airslash", SubResource("AnimationNodeStateMachineTransition_3j1mo")]
-graph_offset = Vector2(-55, 3)
+graph_offset = Vector2(-67, -50)
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lwn7c"]
 advance_mode = 2
@@ -440,7 +441,7 @@ script = ExtResource("3_j6sri")
 
 [node name="SwordHurtBox" type="CollisionShape2D" parent="Flippables/Sword"]
 visibility_layer = 4
-position = Vector2(32, 0)
+position = Vector2(38, 0)
 shape = SubResource("RectangleShape2D_nluyv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flippables"]

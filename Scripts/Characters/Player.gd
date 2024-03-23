@@ -47,6 +47,7 @@ func _physics_process(delta):
 	# Handling the input gained from dashing.
 	if Input.is_action_just_pressed("player_dash") and dashCooldown <= 0:
 		velocity.x -= JUMP_VELOCITY * 2 * direction * (1.5 if is_on_floor() else 1.0)
+		iframes = DASH_MAX_COOLDOWN # And iframes, too~
 		dashCooldown = DASH_MAX_COOLDOWN # Resetting cooldown.
 	
 	# Drag on horizontal momentum.
@@ -78,4 +79,8 @@ func _process(delta):
 	if(Input.is_action_just_pressed("player_pause")):
 		gameMaster.currentState = GameMaster.GameState.PAUSE_MENU if gameMaster.currentState == GameMaster.GameState.GAMEPLAY else GameMaster.GameState.GAMEPLAY
 	
-	timerLabel.text = str(floor(gameMaster.globalTimer))
+	if(iframes > 0):
+		($Flippables/AnimatedSprite2D as AnimatedSprite2D).modulate = Color(2 + sin(iframes * 64), 2 + sin(iframes * 64), 2 + sin(iframes * 64))
+	else: ($Flippables/AnimatedSprite2D as AnimatedSprite2D).modulate = Color.WHITE
+	
+	timerLabel.text = str(floor(gameMaster.globalTimer)) # Handling the timer.
