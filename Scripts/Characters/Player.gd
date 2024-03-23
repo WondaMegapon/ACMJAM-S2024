@@ -12,9 +12,13 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var dashCooldown = 0 # The cooldown of the dash.
 var iframes = 0 # The amount of iframes the character has.
 
+# For animation
+var isSlashing = false
+
 # Attached components
-@export var DamageVolume = Area2D
-@onready var sprite : Node2D = $Flippables
+@onready var DamageVolume : Area2D = $DamageVolume
+@onready var Flippables : Node2D = $Flippables
+@onready var Animator : AnimationTree = $Flippables/AnimationTree
 
 func _ready():
 	gameMaster.currentState = GameMaster.GameState.GAMEPLAY # We're video gaming now.
@@ -22,6 +26,9 @@ func _ready():
 func _physics_process(delta):
 	#Haha what if we had a pause menu?
 	if(gameMaster.currentState != GameMaster.GameState.GAMEPLAY): return
+	
+	# For our little input handler.
+	isSlashing = Input.is_action_just_pressed("player_slash")
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -56,9 +63,9 @@ func _physics_process(delta):
 			iframes = MAX_IFRAMES # Capping iframes
 			print("ouch!")
 			
-	if (direction != 0): sprite.transform.x *= -1 if sign(sprite.transform.x.x) != sign(direction) else 1
+	if (direction != 0): Flippables.transform.x *= -1 if sign(Flippables.transform.x.x) != sign(direction) else 1
 
 func _process(delta):
+	# Input~
 	if(Input.is_action_just_pressed("player_pause")):
 		gameMaster.currentState = GameMaster.GameState.PAUSE_MENU if gameMaster.currentState == GameMaster.GameState.GAMEPLAY else GameMaster.GameState.GAMEPLAY
-	

@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://drgdvvy4taqkv"]
+
+[ext_resource type="Script" path="res://Scripts/Characters/Player.gd" id="1_h7v3j"]
+[ext_resource type="Script" path="res://Scripts/PlayerSword.gd" id="3_j6sri"]
+[ext_resource type="SpriteFrames" uid="uid://dw1l0a6lpw3uh" path="res://Textures/Characters/Player/PlayerSpriteFrames.tres" id="4_l41cj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00ojk"]
+size = Vector2(24, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrvin"]
+size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nluyv"]
+size = Vector2(64, 64)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 5
+script = ExtResource("1_h7v3j")
+
+[node name="PhysicsBox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_00ojk")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+
+[node name="DamageVolume" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+input_pickable = false
+monitorable = false
+
+[node name="DamageVolumeShape" type="CollisionShape2D" parent="DamageVolume"]
+shape = SubResource("RectangleShape2D_qrvin")
+
+[node name="Flippables" type="Node2D" parent="."]
+
+[node name="Sword" type="Area2D" parent="Flippables"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("3_j6sri")
+
+[node name="SwordHurtBox" type="CollisionShape2D" parent="Flippables/Sword"]
+visibility_layer = 4
+position = Vector2(32, 0)
+shape = SubResource("RectangleShape2D_nluyv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flippables"]
+sprite_frames = ExtResource("4_l41cj")
+animation = &"idle"
+frame_progress = 0.973511
+
+[connection signal="area_entered" from="DamageVolume" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Flippables/Sword" to="Flippables/Sword" method="_on_body_entered"]
