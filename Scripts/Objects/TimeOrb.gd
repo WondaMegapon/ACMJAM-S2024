@@ -10,7 +10,7 @@ func _physics_process(delta):
 		var bodies = (CollectionArea as Area2D).get_overlapping_bodies()
 		if(bodies[0]):
 			gameMaster.globalTimerAdd(2)
-			self.queue_free() # GONE
+			queue_free() # GONE
 	
 	if (GravityArea as Area2D).has_overlapping_bodies():
 		var bodies = (GravityArea as Area2D).get_overlapping_bodies()
