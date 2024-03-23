@@ -12,10 +12,13 @@ func _process(delta):
 	match(gameMaster.currentState):
 		GameMaster.GameState.GAMEPLAY:
 			($Gameplay as CanvasItem).show()
+			($Gameplay as Control).grab_focus()
 		GameMaster.GameState.PAUSE_MENU:
 			($Pause as CanvasItem).show()
+			($Pause/Quit/Restart as Control).grab_focus()
 		GameMaster.GameState.GAME_OVER:
 			($Dead as CanvasItem).show()
+			($Dead/Quit/Again as Control).grab_focus()
 		_:
 			pass
 	previousState = gameMaster.currentState
