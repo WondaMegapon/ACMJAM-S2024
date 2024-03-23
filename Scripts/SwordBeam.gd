@@ -19,3 +19,4 @@ func _on_body_entered(body):
 		if child is Damageable:
 			child.hit(damage)
 			print_debug(body.name + " took " + str(damage))
+

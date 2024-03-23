@@ -12,13 +12,13 @@ process_mode = 1
 position = Vector2(187, 133)
 
 [node name="Player" parent="." instance=ExtResource("2_i8yml")]
-position = Vector2(133, -53)
+position = Vector2(-650, 49)
 
 [node name="Enemy" parent="." instance=ExtResource("4_8trr8")]
 position = Vector2(114, -224)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("6_3fbkg")]
-position = Vector2(33, -14)
+position = Vector2(-73, 79)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("4_7yxpr")
@@ -30,7 +30,7 @@ layer_0/tile_data = PackedInt32Array(196584, 327683, 1, 196585, 327683, 1, 19658
 position = Vector2(-142, -258)
 
 [node name="TimeOrb" parent="." instance=ExtResource("4_xh056")]
-position = Vector2(70, 71)
+position = Vector2(174, 114)
 
 [node name="Enemy2" parent="." instance=ExtResource("4_8trr8")]
 position = Vector2(743, 113)
@@ -166,3 +166,36 @@ position = Vector2(4452, 1824)
 
 [node name="UpDownEnemy17" parent="." instance=ExtResource("4_ell8n")]
 position = Vector2(4990, 2078)
+
+[node name="TimeOrb6" parent="." instance=ExtResource("4_xh056")]
+position = Vector2(1761, 575)
+
+[node name="TimeOrb7" parent="." instance=ExtResource("4_xh056")]
+position = Vector2(3218, 961)
+
+[node name="TimeOrb8" parent="." instance=ExtResource("4_xh056")]
+position = Vector2(4681, 1800)
+
+[node name="Enemy24" parent="." instance=ExtResource("4_8trr8")]
+position = Vector2(3185, 3250)
+
+[node name="Enemy25" parent="." instance=ExtResource("4_8trr8")]
+position = Vector2(3372, 3188)
+
+[node name="Enemy26" parent="." instance=ExtResource("4_8trr8")]
+position = Vector2(3672, 3107)
+
+[node name="Enemy27" parent="." instance=ExtResource("4_8trr8")]
+position = Vector2(3959, 3082)
+
+[node name="Enemy28" parent="." instance=ExtResource("4_8trr8")]
+position = Vector2(4027, 3301)
+
+[node name="Enemy29" parent="." instance=ExtResource("4_8trr8")]
+position = Vector2(4150, 3160)
+
+[node name="TimeOrb9" parent="." instance=ExtResource("4_xh056")]
+position = Vector2(3901, 3241)
+
+[node name="TimeOrb10" parent="." instance=ExtResource("4_xh056")]
+position = Vector2(2993, 3245)

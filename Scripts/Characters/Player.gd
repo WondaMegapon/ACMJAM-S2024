@@ -3,7 +3,7 @@ extends CharacterBody2D
 const SPEED = 300.0 # The movement speed of the character.
 const JUMP_VELOCITY = -400.0 # The impulse jump force of the character.
 const DASH_MAX_COOLDOWN = 0.5 # The max cooldown of the dash
-const BEAM_MAX_COOLDOWN = 0.3 # Bwoom.
+const BEAM_MAX_COOLDOWN = 1 # Bwoom.
 const MAX_IFRAMES = 0.7 # The max iframes on the character.\
 const SWORDBEAM = preload("res://Scenes/sword_beam.tscn")
 
@@ -61,7 +61,7 @@ func _physics_process(delta):
 		get_parent().add_child(beam)
 		beam.position = position
 		beam.scale.x *= sign(direction)
-		gameMaster.globalTimerAdd(-1)
+		gameMaster.globalTimerAdd(-5)
 		iframes += BEAM_MAX_COOLDOWN
 	
 	# Decreasing the cooldown.
