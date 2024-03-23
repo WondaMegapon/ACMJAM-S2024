@@ -1,98 +1,36 @@
-[gd_scene load_steps=15 format=3 uid="uid://6xkocxfyf2db"]
+[gd_scene load_steps=6 format=3 uid="uid://6xkocxfyf2db"]
 
-[ext_resource type="Script" path="res://Scripts/Characters/Enemies/BasicEnemy.gd" id="1_yyesd"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemies/Skulljectile.gd" id="1_s0fvy"]
 [ext_resource type="Script" path="res://Scripts/Damageable.gd" id="2_wk1su"]
-[ext_resource type="Texture2D" uid="uid://bqir5rv3ubl1x" path="res://Textures/Characters/Player/SHEET_hellknight_impjump.png" id="3_guwyg"]
-[ext_resource type="Texture2D" uid="uid://gexpqynd1lce" path="res://Textures/Characters/Player/SHEET_hellknight_impwalk.png" id="4_debtq"]
+[ext_resource type="SpriteFrames" uid="uid://0hmueipil7je" path="res://Textures/Characters/Skulljectile/hellknight.tres" id="3_2s7sf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5k1yw"]
-size = Vector2(48, 48)
+size = Vector2(48, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vr1nw"]
-size = Vector2(64, 52)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6vlcy"]
-atlas = ExtResource("3_guwyg")
-region = Rect2(0, 0, 59, 39)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w1goq"]
-atlas = ExtResource("3_guwyg")
-region = Rect2(59, 0, 59, 39)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_np6kb"]
-atlas = ExtResource("3_guwyg")
-region = Rect2(118, 0, 59, 39)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0aca6"]
-atlas = ExtResource("4_debtq")
-region = Rect2(0, 0, 59, 39)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r0llt"]
-atlas = ExtResource("4_debtq")
-region = Rect2(59, 0, 59, 39)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_amq8f"]
-atlas = ExtResource("4_debtq")
-region = Rect2(118, 0, 59, 39)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vxeeh"]
-atlas = ExtResource("4_debtq")
-region = Rect2(177, 0, 59, 39)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_66e1y"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6vlcy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w1goq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_np6kb")
-}],
-"loop": true,
-"name": &"jump",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0aca6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r0llt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_amq8f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vxeeh")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 12.0
-}]
+size = Vector2(64, 42)
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 7
-script = ExtResource("1_yyesd")
+script = ExtResource("1_s0fvy")
 
 [node name="PhysicsBox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_5k1yw")
 
 [node name="DamageVolume" type="Area2D" parent="."]
 collision_layer = 4
-collision_mask = 0
+collision_mask = 2
 
 [node name="DamageVolumeShape" type="CollisionShape2D" parent="DamageVolume"]
 shape = SubResource("RectangleShape2D_vr1nw")
 
 [node name="Node" type="Node" parent="."]
 script = ExtResource("2_wk1su")
+health = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_66e1y")
-animation = &"jump"
+sprite_frames = ExtResource("3_2s7sf")
+animation = &"charge"
 
 [connection signal="area_entered" from="DamageVolume" to="." method="_on_area_2d_area_entered"]
