@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpbidlwb8o8k8"]
+
+[ext_resource type="Texture2D" uid="uid://bmo4gbfvunvfc" path="res://mimicshop.png" id="1_7pypl"]
+[ext_resource type="Script" path="res://Scripts/Characters/MimicShop.gd" id="1_hbg44"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vr22i"]
+size = Vector2(79, 76)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1lijl"]
+size = Vector2(78, 75)
+
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("ShopArea")]
+light_mask = 8
+z_index = -1
+script = ExtResource("1_hbg44")
+ShopArea = NodePath("ShopArea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, -2)
+shape = SubResource("RectangleShape2D_vr22i")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_7pypl")
+
+[node name="ShopArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="ShopBox" type="CollisionShape2D" parent="ShopArea"]
+position = Vector2(-3, -1.5)
+shape = SubResource("RectangleShape2D_1lijl")
