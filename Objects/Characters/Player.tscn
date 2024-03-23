@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player.gd" id="1_h7v3j"]
 [ext_resource type="Texture2D" uid="uid://dx1ns056julki" path="res://Textures/Characters/Player/PlayerTest.png" id="2_pi0qr"]
-[ext_resource type="Script" path="res://Scripts/Sword.gd" id="3_j6sri"]
+[ext_resource type="Script" path="res://Scripts/PlayerSword.gd" id="3_j6sri"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00ojk"]
 size = Vector2(60, 60)
@@ -21,10 +21,6 @@ DamageVolume = NodePath("DamageVolume")
 [node name="PhysicsBox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_00ojk")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = ExtResource("2_pi0qr")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
@@ -38,15 +34,21 @@ monitorable = false
 [node name="DamageVolumeShape" type="CollisionShape2D" parent="DamageVolume"]
 shape = SubResource("RectangleShape2D_qrvin")
 
-[node name="Sword" type="Area2D" parent="."]
+[node name="Flippables" type="Node2D" parent="."]
+
+[node name="Sword" type="Area2D" parent="Flippables"]
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("3_j6sri")
 
-[node name="SwordHurtBox" type="CollisionShape2D" parent="Sword"]
+[node name="SwordHurtBox" type="CollisionShape2D" parent="Flippables/Sword"]
 visibility_layer = 4
-position = Vector2(69.5, -4.5)
+position = Vector2(72, 0)
 shape = SubResource("RectangleShape2D_nluyv")
 
+[node name="Sprite" type="Sprite2D" parent="Flippables"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_pi0qr")
+
 [connection signal="area_entered" from="DamageVolume" to="." method="_on_area_2d_area_entered"]
-[connection signal="body_entered" from="Sword" to="Sword" method="_on_body_entered"]
+[connection signal="body_entered" from="Flippables/Sword" to="Flippables/Sword" method="_on_body_entered"]

@@ -14,7 +14,7 @@ var iframes = 0 # The amount of iframes the character has.
 
 # Attached components
 @export var DamageVolume = Area2D
-@onready var sprite : Sprite2D = $Sprite
+@onready var sprite : Node2D = $Flippables
 
 func _ready():
 	gameMaster.currentState = GameMaster.GameState.GAMEPLAY # We're video gaming now.
@@ -39,8 +39,6 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("player_dash") and dashCooldown <= 0:
 		velocity.x -= JUMP_VELOCITY * 2 * direction * (1.5 if is_on_floor() else 1.0)
 		dashCooldown = DASH_MAX_COOLDOWN # Resetting cooldown.
-		
-	
 	
 	# Drag on horizontal momentum.
 	velocity.x = move_toward(velocity.x, direction * SPEED, 100)
@@ -58,10 +56,7 @@ func _physics_process(delta):
 			iframes = MAX_IFRAMES # Capping iframes
 			print("ouch!")
 			
-	if direction < 0:
-			sprite.flip_h = true
-	if direction > 0:
-			sprite.flip_h = false
+	if (direction != 0): sprite.transform.x *= -1 if sign(sprite.transform.x.x) != sign(direction) else 1
 
 func _process(delta):
 	if(Input.is_action_just_pressed("player_pause")):
